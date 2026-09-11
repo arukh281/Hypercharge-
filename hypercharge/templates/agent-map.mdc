@@ -1,0 +1,16 @@
+---
+description: Route tasks to on-demand rules and skills
+alwaysApply: false
+---
+
+# Agent map
+
+| Task | Load |
+|------|------|
+| Hypercharge (every turn) | `hypercharge.mdc`, `hypercharge-grounding.mdc` — synced by setup |
+| Start day / loose ends | `hypercharge wrapup --start-day` |
+| What's going on | `hypercharge wrapup --brief` |
+| Hand off for today | hypercharge wrapup --day |
+| Wrap up this chat | hypercharge wrapup |
+
+Disable global skills listed in `repo-profile.json` → `disable_for_repo`.

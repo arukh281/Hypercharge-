@@ -1,0 +1,61 @@
+---
+description: Hypercharge session — chats, wrapup, escalation; user stays in chat
+alwaysApply: true
+globs:
+---
+
+# Hypercharge · session (managed by setup)
+
+<!-- hypercharge-managed: synced by `hypercharge setup` — do not hand-edit -->
+
+## Every turn
+
+Context is injected via **sessionStart** hook. Fallback: `hypercharge context-packet --budget 800`.
+
+## After code edits (mandatory — same turn)
+
+**Do not end the turn** after non-trivial file changes without:
+
+1. `hypercharge log --file <path> --note "…"` (appends `chats/<id>.md` + patches `OPEN_CHATS.yaml`), **or** manually:
+   - Append `chats/<id>.md` — what changed (not just "file edited").
+   - Patch `OPEN_CHATS.yaml` — `files_touched`, `last_active`, `goal` if shifted.
+2. New blocker → `open_questions` on **this thread only**.
+
+Hooks auto-log file touches only (`auto: file edited`) — you still owe a **semantic note** before ending the turn.
+
+User-confirmed decision → `REPO_SESSION.md` `## Decisions` (or `hypercharge log --decision "…"`).
+
+## Commit policy
+
+**During multi-task plan execution** — commit locally after each completed task/batch without waiting for per-task user approval. User verifies the whole change at the end. **Never `git push`** without explicit user approval.
+
+**Outside plan execution** — ask before committing unless the user explicitly requests commits (e.g. "commit every change").
+
+Subagents under a parent agent do **not** commit independently — only the orchestrator commits.
+
+## Commands (you run — user stays in chat)
+
+| User says | You run |
+|-----------|---------|
+| what's going on / catch me up | `hypercharge wrapup --brief` |
+| start day / startday | `hypercharge wrapup --brief` then `hypercharge wrapup --start-day --json` |
+| new topic / new tab | `hypercharge new-chat --goal "…"` |
+| wrap up | `hypercharge wrapup` |
+| done for the day | `hypercharge wrapup --day` |
+| after code edits | `hypercharge log --file <path> --note "…"` |
+| remove hypercharge | `hypercharge teardown --path <repo>` (`--dry-run` to preview) |
+
+Never tell the user to run graphify or query — that is your job (see `hypercharge-grounding.mdc`).
+
+## Parallel chats
+
+- `CURRENT_CHAT.md` is one pointer — new tab + new topic → `new-chat` first.
+- Never merge another thread's `goal` or `open_questions`.
+- Brief file overlap → ask user; optional `--related-to <chat_id>`.
+
+## Loose ends
+
+- Do not treat another chat's open questions as resolved.
+- Open questions without user **defer** → note at wrapup, not a morning checklist.
+- Never show internal ids or status grids to the user.
+

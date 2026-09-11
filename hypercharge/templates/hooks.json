@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": ".cursor/hooks/hypercharge-session-start.sh"
+      }
+    ],
+    "beforeSubmitPrompt": [
+      {
+        "command": ".cursor/hooks/hypercharge-before-prompt.sh"
+      }
+    ],
+    "preToolUse": [
+      {
+        "command": ".cursor/hooks/hypercharge-pre-tool.sh"
+      }
+    ],
+    "afterFileEdit": [
+      {
+        "command": ".cursor/hooks/hypercharge-after-edit.sh"
+      }
+    ],
+    "afterAgentResponse": [
+      {
+        "command": ".cursor/hooks/hypercharge-after-response.sh"
+      }
+    ]
+  }
+}

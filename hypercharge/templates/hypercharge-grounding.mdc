@@ -1,0 +1,49 @@
+---
+description: Grounding — knowledge query, path citations, shrink; graph + memory
+alwaysApply: true
+globs:
+---
+
+# Hypercharge · grounding (managed by setup)
+
+<!-- hypercharge-managed: synced by `hypercharge setup` — do not hand-edit -->
+
+## Before repo claims
+
+1. `hypercharge knowledge "<topic>" --budget 1500` (preferred) or `hypercharge query`.
+2. Exit code **must be 0**. If non-zero, read cited paths or grep source before proceeding.
+3. Read at least one `path:line` before editing or explaining behaviour.
+
+Run `hypercharge knowledge` for grounded context on unfamiliar areas.
+
+## Pre-edit
+
+- Query exit 0 **or** read target file(s) and cite path:line.
+- `hypercharge log --file <path> --note "…"` after non-trivial edits.
+
+## Shell & writes
+
+- Hooks are **advisory by default** (`grounding_gate: warn`): they inject context and flag
+  ungrounded shell/writes, but never block. The host's own permission prompt is the gate.
+- `block` (opt-in) — the **Cursor** pre-tool hook denies ungrounded writes/shell on repo
+  paths. **Claude Code hooks stay advisory even under `block`** — they never emit a
+  permission decision, so Claude Code's own prompt remains the gate.
+- `off` — pure context injection; no advisories.
+- Safe (never flagged): `hypercharge`, `pytest`, `git status/log/rev-parse`, `graphify`.
+
+## Memory
+
+- `hypercharge log --decision "…"` for user-confirmed decisions — indexed for recall.
+- Day wrapup rebuilds `.cursor/hypercharge/memory-index.sqlite`.
+
+## Large tool output
+
+After pytest/grep/build (> ~12k chars): `hypercharge shrink --file /tmp/out.txt` before reasoning. Never shrink source files you will cite.
+
+## After structural edits
+
+`graphify update .` from repo root.
+
+## Maps (optional)
+
+`.cursor/graphify-out/graph.html`, `GRAPH_REPORT.md`

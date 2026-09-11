@@ -1,0 +1,14 @@
+{
+  "schema": 2,
+  "bundled": {
+    "graphifyy": {
+      "version": "0.8.39",
+      "wheel": "graphifyy-0.8.39-py3-none-any.whl",
+      "pypi": "graphifyy==0.8.39",
+      "lock": "locks/graphifyy-slim.txt",
+      "notes": "Slim stack — 8 common languages. Installed on repo setup, not machine install."
+    }
+  },
+  "install_order": ["graphifyy"],
+  "notes": "No headroom — hypercharge shrink is built-in. Refresh wheels: scripts/vendor-sync.sh"
+}

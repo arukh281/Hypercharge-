@@ -1,0 +1,2 @@
+# Deprecated — use graphifyy-slim.txt. Kept for backwards compatibility with old vendor-sync.
+-r graphifyy-slim.txt

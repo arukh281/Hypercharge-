@@ -1,0 +1,17 @@
+{
+  "pack": "hypercharge-core",
+  "version": "0.1.0",
+  "source": "bundled in hypercharge package — not fetched from the web",
+  "skills": [
+    "hypercharge",
+    "hypercharge-concise",
+    "ask-questions-if-underspecified",
+    "differential-review",
+    "insecure-defaults",
+    "static-analysis",
+    "modern-python",
+    "test-driven-development",
+    "systematic-debugging",
+    "verification-before-completion"
+  ]
+}

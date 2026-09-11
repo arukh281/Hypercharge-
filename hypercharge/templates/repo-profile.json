@@ -1,0 +1,91 @@
+{
+  "hypercharge_version": "0.1.0",
+  "org": "yourco",
+  "agent_target": "both",
+  "locale": "en-GB",
+  "licence_policy": "unspecified",
+  "intent_resolution": "branch_path_merge_v1",
+  "skills": {
+    "project": [],
+    "recommended_user": [],
+    "disable_for_repo": []
+  },
+  "rules": {
+    "always_apply": [
+      "hypercharge.mdc",
+      "hypercharge-grounding.mdc"
+    ],
+    "on_demand": {}
+  },
+  "graph": {
+    "output_dir": ".cursor/graphify-out",
+    "path": ".cursor/graphify-out/graph.json",
+    "html": ".cursor/graphify-out/graph.html",
+    "tree_html": ".cursor/graphify-out/GRAPH_TREE.html",
+    "report": ".cursor/graphify-out/GRAPH_REPORT.md",
+    "stale_after_days": 14
+  },
+  "session": {
+    "open_chats_path": ".cursor/session/OPEN_CHATS.yaml",
+    "stale_after_days": 14,
+    "legacy_adapters": [],
+    "commit_policy": "team_default",
+    "integration_branch": "main"
+  },
+  "gates": {
+    "large_change_files": 5
+  },
+  "autonomy": {
+    "grounding_gate": "off",
+    "auto": ["context_packet", "hook_session_start", "graph_queue_drain"],
+    "ask": ["large_change", "destructive_git", "security_sensitive"]
+  },
+  "hooks": {
+    "enabled": true,
+    "managed_prefix": "hypercharge-"
+  },
+  "escalation": {
+    "auto_suggest": true,
+    "mode": "ask",
+    "reasoning_pool": [
+      {
+        "id": "explore",
+        "label": "Explore the codebase",
+        "subagent_type": "explore",
+        "when": "Large or unfamiliar area; need a map before changing code"
+      },
+      {
+        "id": "generalPurpose",
+        "label": "Deep multi-step reasoning",
+        "subagent_type": "generalPurpose",
+        "when": "Architecture, refactor, root-cause debug, many files"
+      },
+      {
+        "id": "shell",
+        "label": "Shell / CI specialist",
+        "subagent_type": "shell",
+        "when": "Git, builds, test runners, environment issues"
+      },
+      {
+        "id": "security-review",
+        "label": "Security review",
+        "subagent_type": "security-review",
+        "when": "Auth, secrets, user input, sensitive features"
+      },
+      {
+        "id": "bugbot",
+        "label": "Code review",
+        "subagent_type": "bugbot",
+        "when": "Review local changes before merge"
+      }
+    ],
+    "triggers": [
+      "Unfamiliar area still unclear after hypercharge query and graphify update",
+      "Architecture or trade-off with no single-file answer",
+      "Same bug or test failed twice",
+      "User asks for deeper thinking or a review",
+      "Security-sensitive change",
+      "Large refactor over gates.large_change_files"
+    ]
+  }
+}

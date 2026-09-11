@@ -1,0 +1,32 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# macOS
+.DS_Store
+
+# IDE / session (Hypercharge managed — not for consumers)
+.cursor/
+graphify-out/
+
+# Dev wiring — contributors run `hypercharge setup` themselves
+.claude/
+
+# Dev-only — not needed to use the tool
+uv.lock
+docs/
+scripts/vendor-sync.sh
+CLAUDE.md
+
+# Secrets / local overrides
+*.env
+.env*
+

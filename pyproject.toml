@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hypercharge"
+version = "0.1.0"
+description = "Repo-native agent platform for Cursor and Claude Code: code graph, session memory and safety hooks"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Aradhya Khandelwal"}]
+dependencies = [
+    "rich>=13.7.0",
+    "pyyaml>=6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/arukh281/Hypercharge-"
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "pytest-cov>=4.0"]
+
+[project.scripts]
+hypercharge = "hypercharge.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["hypercharge"]
+
+[tool.coverage.report]
+# Enforced in CI at 58%; raise toward 70 as untested CLI modules gain coverage.
+fail_under = 58
+show_missing = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["hypercharge*"]
+
+[tool.setuptools.package-data]
+hypercharge = [
+    "templates/*.mdc",
+    "templates/*.md",
+    "templates/*.yaml",
+    "templates/*.json",
+    "templates/hooks/*.sh",
+    "templates/claude-hooks/*.sh",
+    "skill/**/*.md",
+    "skill-packs/**/*.md",
+    "skill-packs/**/*.json",
+    "vendor/**/*.whl",
+    "vendor/**/*.txt",
+    "vendor/**/*.json",
+]
