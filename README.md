@@ -138,5 +138,7 @@ Alpha (v0.1.0). Tested on macOS (Apple Silicon) with Python 3.11+. Linux and Win
 
 Hypercharge is released under the MIT licence (see `LICENCE`). Copyright (c) 2026 Aradhya Khandelwal.
 
+The MIT licence covers the Hypercharge code itself. Third-party components keep their own licences, and skill texts under `hypercharge/skill-packs/` that are adapted from other projects are licensed as stated in `hypercharge/skill-packs/ATTRIBUTION.md`.
+
 - Code maps are built with [graphify](https://pypi.org/project/graphifyy/) and tree-sitter, installed from PyPI on first `setup`. They keep their own licences.
 - Some bundled skills are adapted from [Trail of Bits skills](https://github.com/trailofbits/skills) (CC BY-SA 4.0) and [obra/superpowers](https://github.com/obra/superpowers) (MIT). See `hypercharge/skill-packs/ATTRIBUTION.md`.
