@@ -20,7 +20,7 @@ _DEFAULT_DEV_PREFIXES = (
     "pyproject.toml",
     "ARCHITECTURE.md",
     "README.md",
-    "LICENCE",
+    "LICENSE",
 )
 
 
