@@ -4,8 +4,8 @@ These skills ship inside the `hypercharge` Python package under `hypercharge/ski
 
 | Skill | Source | Licence of this file |
 |---|---|---|
-| hypercharge | Original | MIT (see LICENCE) |
-| hypercharge-concise | Original | MIT (see LICENCE) |
+| hypercharge | Original | MIT (see LICENSE) |
+| hypercharge-concise | Original | MIT (see LICENSE) |
 | ask-questions-if-underspecified | Adapted from Trail of Bits skills | CC BY-SA 4.0 |
 | differential-review | Adapted from Trail of Bits skills | CC BY-SA 4.0 |
 | insecure-defaults | Adapted from Trail of Bits skills | CC BY-SA 4.0 |
